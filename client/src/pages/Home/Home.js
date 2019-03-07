@@ -14,9 +14,8 @@ class Home extends Component {
 
   componentDidMount() {
     API.Symbols.get(this.context.authToken)
-      .then(response => response.data)
-      .then(symbols => this.setState({ symbols }))
-      .catch(err => console.log(err));
+    .then(data => this.setState({
+      symbols: data.data.symbols}))
   }
 
   handleInputChange = event => {
@@ -40,14 +39,18 @@ class Home extends Component {
       symbols: data.data.symbols}))
   }
 
-  handleClickChart = symbolId => {
-    API.History.get(this.context.authToken, symbolId)
-    .then(response => console.log(response))
-
+  handleClickChart = (symbolId, symbol) => {
+    API.History.getIndividual(this.context.authToken, symbolId, symbol)
+    .then(response => response.data)
+    .then(data => data.map((history, i) => {
+      history.x = data.length - i;
+      return history
+    }))
+    .then(data => console.log(data));
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.state.symbols)
     return (
       <div className="container">
         <div className="row">
@@ -65,6 +68,7 @@ class Home extends Component {
           <div className="col-lg-10 tbl">
             <div className="tblhldr">
               <table className="tg">
+                <tbody>
                 <tr>
                   <th className="tg-baqh" colspan="6">My Watched Symbols</th>
                 </tr>
@@ -77,9 +81,10 @@ class Home extends Component {
                 </tr>
                  {this.state.symbols.length && 
                   this.state.symbols.map(symbol => <tr><td className="tg-hmp3">{symbol.symbol}</td><td className="tg-hmp3">{symbol.name}</td><td className="tg-hmp3">${symbol.lastPrice}</td>
-                  <td className="tg-hmp3"><Link to={`/symbol/${symbol.symbol}`} className="btn btn-primary">Chart</Link></td>
+                  <td className="tg-hmp3"><Link to={`api/histories/${symbol.symbol}`} className="btn btn-primary" onClick={() => this.handleClickChart(symbol.id, symbol.symbol)}>Chart</Link></td>
                   <td className="tg-hmp3"><div onClick={() => this.handleClickRemove(symbol.id)} className="btn btn-danger"> X </div></td>
                 </tr>)}
+                </tbody>
               </table>
             </div>
           </div>

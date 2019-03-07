@@ -5,11 +5,13 @@ const db = require('../../models');
 
 const BATCH_SIZE = 1000;
 
-historiesController.get('/', (req, res) => {
-  db.History.findAll({where: req.symbolId, include: [db.Symbol]})
-  .then(stockHistory => res.json(stockHistory))
-})
 
+historiesController.post('/stocks/:symbol', (req, res) => {
+  console.log('routing now')
+  db.History.findAll({where: {SymbolId: req.body.symbolId}})
+  .then(history => res.json(history))
+  .catch(err => res.json(err));
+})
 historiesController.post('/cron', (req, res) => {
   db.Symbol.findAll()
     .then(symbols => {
@@ -52,6 +54,11 @@ historiesController.post('/cron', (req, res) => {
       });
     })
     .catch(err => res.send(err));
-});
+})
+historiesController.get('/', (req, res) => {
+  console.log("wrong route");
+  db.History.findAll({where: req.symbolId, include: [db.Symbol]})
+  .then(stockHistory => res.json(stockHistory))
+})
 
 module.exports = historiesController;

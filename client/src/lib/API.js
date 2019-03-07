@@ -48,6 +48,14 @@ export default {
             'Authorization': `Bearer ${authToken}`
           }
       });
-    }
+    },
+    getIndividual: function (authToken, symbolId, symbol) {
+      return axios.post('/api/histories/stocks/'+ symbol , { symbolId: symbolId },
+	    {
+          headers: {
+            'Authorization': `Bearer ${authToken}`
+          }
+      });
+    },
   }
 }

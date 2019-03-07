@@ -25,4 +25,10 @@ symbolsController.post('/remove', JWTVerifier, (req, res) => {
     .catch(err => res.json(err));
 });
 
+// symbolsController.get('/:symbol', JWTVerifier, (req, res) => {
+//   db.History.findAll({where: {symbol: req.params.symbol}})
+//   .then(history => res.json(history))
+//   .catch(err => res.json(err));
+// })
+
 module.exports = symbolsController;
