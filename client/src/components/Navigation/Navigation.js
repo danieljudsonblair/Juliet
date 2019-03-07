@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; 
+import down from '../images/down.png';
+import up from '../images/up.png';
+
 
 import AuthContext from '../../contexts/AuthContext';
 import AuthDropdown from '../../components/AuthDropdown/AuthDropdown';
@@ -16,7 +19,7 @@ class Navigation extends Component {
       collapsed: !this.state.collapsed
     });
   }
-
+  
   render() {
     const { user } = this.context;
     const { collapsed } = this.state;
@@ -24,9 +27,13 @@ class Navigation extends Component {
     const togglerClass = `navbar-toggler ${collapsed && 'collapsed'}`;
 
     return (
-      <div className='Navigation'>
+      <div className='Navigation' id="nav">
         <nav className='navbar navbar-expand-lg navbar-light bg-light mb-3'>
-          <Link className='navbar-brand' to='#'>Project 3</Link>
+          <Link className='navbar-brand' to='#'><span>Jul</span>
+          <img className="downarrow" src={down} alt="down" />
+          <span>e</span>
+          <img className="uparrow" src={up} alt="up" />
+          </Link>
           <button className={togglerClass} onClick={this.toggleCollapse} data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
             <span className='navbar-toggler-icon'></span>
           </button>

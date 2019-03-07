@@ -91,8 +91,8 @@ class Home extends Component {
           <div className="col-lg-10 fm">
             <form onSubmit={this.handleSubmit}>
               Lookup Symbol<br />
-              <input type="text" name="symbol" value={this.state.schField} onChange={this.handleInputChange} /><br />
-              <button type="submit">Add Symbol</button>
+              <input className="symINPUT" type="text" name="symbol" value={this.state.schField} onChange={this.handleInputChange} /><br />
+              <button className="subBTN" type="submit">Add Symbol</button>
             </form>
           </div>
           <div className="col-lg-1"></div>
