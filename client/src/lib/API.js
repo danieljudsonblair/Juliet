@@ -50,7 +50,7 @@ export default {
       });
     },
     getIndividual: function (authToken, symbolId, symbol) {
-      return axios.post('/api/histories/stocks/'+ symbol , { symbolId: symbolId },
+      return axios.post('/api/histories/stocks/history' , { symbolId: symbolId },
 	    {
           headers: {
             'Authorization': `Bearer ${authToken}`

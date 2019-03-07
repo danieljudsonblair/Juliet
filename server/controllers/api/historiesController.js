@@ -6,7 +6,7 @@ const db = require('../../models');
 const BATCH_SIZE = 1000;
 
 
-historiesController.post('/stocks/:symbol', (req, res) => {
+historiesController.post('/stocks/history', (req, res) => {
   console.log('routing now')
   db.History.findAll({where: {SymbolId: req.body.symbolId}})
   .then(history => res.json(history))
