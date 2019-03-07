@@ -32,17 +32,7 @@
         height: '400', // Height of the chart
         dataFormat: 'json', // Data type
         dataSource: {
-          "chart": {
-              "caption": "Daily Stock Price HRYS",
-              "subCaption": "Last 2 months",
-              "numberprefix": "$",
-              "pyaxisname": "Price",
-              "vyaxisname": "Volume",
-              "volumeHeightPercent": "20",
-              "showvolumechart": "1",
-              "vNumberPrefix": "",
-              "theme": "fusion"
-          },
+          "chart": this.props.chartOptions,
           "categories": [],
           "dataset": [ // import data here
               {

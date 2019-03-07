@@ -12,7 +12,18 @@ class Home extends Component {
     symbols: [],
     schField: "",
     historicalData: [],
-    showChart: false
+    showChart: false,
+    chartOptions: {
+      "caption": "Daily Stock Price HRYS",
+      "subCaption": "1000 Day History",
+      "numberprefix": "$",
+      "pyaxisname": "Price",
+      "vyaxisname": "Volume",
+      "volumeHeightPercent": "20",
+      "showvolumechart": "1",
+      "vNumberPrefix": "",
+      "theme": "fusion"
+    }
   }
 
   componentDidMount() {
@@ -49,7 +60,17 @@ class Home extends Component {
       history.x = data.length - i;
       return history
     }))
-    .then(data => this.setState({historicalData: data, showChart: true}));
+    .then(data => this.setState({historicalData: data, showChart: true, chartOptions:{
+      "caption": symbol,
+      "subCaption": "1000 Day History",
+      "numberprefix": "$",
+      "pyaxisname": "Price",
+      "vyaxisname": "Volume",
+      "volumeHeightPercent": "20",
+      "showvolumechart": "1",
+      "vNumberPrefix": "",
+      "theme": "fusion"
+    }}));
   }
 
   handleChartClosure = () => {
@@ -57,7 +78,7 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.state.symbols)
+    console.log(this.state)
     return (
       <div className="container">
         <div className="row">
@@ -73,7 +94,7 @@ class Home extends Component {
         <div className="row pos">
           <div className="col-lg-1"></div>
           <div className="col-lg-10 tbl">
-                {this.state.showChart && <Chart onClick={this.handleChartClosure} historicalData={this.state.historicalData}/>}
+                {this.state.showChart && <Chart onClick={this.handleChartClosure} chartOptions={this.state.chartOptions} historicalData={this.state.historicalData}/>}
                 <br/><br/>
             <div className="tblhldr">
               <table className="tg">
@@ -90,7 +111,7 @@ class Home extends Component {
                 </tr>
                  {this.state.symbols.length && 
                   this.state.symbols.map(symbol => <tr><td className="tg-hmp3">{symbol.symbol}</td><td className="tg-hmp3">{symbol.name}</td><td className="tg-hmp3">${symbol.lastPrice}</td>
-                  <td className="tg-hmp3"><div className="btn btn-primary" onClick={() => this.handleClickChart(symbol.id, symbol.symbol)}>Chart</div></td>
+                  <td className="tg-hmp3"><div className="btn btn-primary" onClick={() => this.handleClickChart(symbol.id, symbol.name)}>Chart</div></td>
                   <td className="tg-hmp3"><div onClick={() => this.handleClickRemove(symbol.id)} className="btn btn-danger"> X </div></td>
                 </tr>)}
                 </tbody>
