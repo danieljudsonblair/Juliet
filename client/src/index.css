@@ -1,3 +1,12 @@
+colors
+#102336
+#5d88bb
+#b3cbe4
+#fafafa
+#d6d6d6
+#a1a8b2
+
+
 body {
   margin: 0;
   padding: 0;
@@ -6,6 +15,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #102336 !important;
+
 }
 
 code {
@@ -17,8 +28,18 @@ table {
 }
 
 body {
-  background-color: rgb(64, 95, 99);
-  color: white;
+  height: 95vh;
+  background-image: linear-gradient(
+    to right,
+    rgba(16, 35, 54, .8),
+    rgba(93, 136, 187, 0.7)
+  ),
+  url('./components/images/greymetal.jpeg');
+  color:#fafafa;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 header {
@@ -50,9 +71,7 @@ h1 {
   border-width: 1px;
   overflow: hidden;
   word-break: normal;
-  border-color: #aabcfe;
-  color: #669;
-  background-color: #e8edff;
+  border-color: #a1a8b2;
 }
 
 .tg th {
@@ -64,25 +83,92 @@ h1 {
   border-width: 1px;
   overflow: hidden;
   word-break: normal;
-  border-color: #aabcfe;
-  color: #039;
+  border-color: #a1a8b2;   
   background-color: #b9c9fe;
 }
 
 .tg .tg-hmp3 {
-  background-color: #D2E4FC;
   text-align: center;
-  vertical-align: top
+  vertical-align: top;
+  background-color:rgba(161, 168,178, .6) !important; 
+  color: #102336;
 }
+
 
 .tg .tg-baqh {
   text-align: center;
-  vertical-align: top
+  vertical-align: top;
+  background-image: linear-gradient(
+    to right,
+    rgba(161, 168,178, .8),
+    rgba(161, 168,178, .8)
+  ),
+  url('./components/images/moremetal.jpeg');
+  -webkit-box-shadow: 0 8px 6px -6px #383838;
+	   -moz-box-shadow: 0 8px 6px -6px #383838;
+          box-shadow: 0 8px 6px -6px #383838;
+  color: #102336;
 }
 
 .fm {
-  color: rgb(235, 235, 243);
+  color:#d6d6d6;
   margin-top: 5%;
   text-align: center;
 }
 
+
+.navbar {
+  background-image: linear-gradient(
+    to right,
+    rgba(161, 168,178, .8),
+    rgba(161, 168,178, .8)
+  ),
+  url('./components/images/moremetal.jpeg') ;
+  -webkit-box-shadow: 0 8px 6px -6px #383838;
+	   -moz-box-shadow: 0 8px 6px -6px #383838;
+	        box-shadow: 0 8px 6px -6px #383838;
+}
+
+
+.subBTN {
+  margin-top: .5rem;
+  background-color: #a1a8b2;
+  -moz-box-shadow: 0 1px #a1a8b2 inset;
+-webkit-box-shadow: 0 1px #a1a8b2 inset;
+box-shadow: 0 1px #a1a8b2 inset;
+}
+
+.symINPUT{
+  background-color: #d6d6d6;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  display: inline-block;
+  background-image: url(./components/images/metal.jpg);
+  -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+}
+.downarrow {
+  position: relative;
+  margin-right: -1rem;
+  margin-left: -1rem;
+  margin-bottom: -.5rem;
+  height: 3rem;
+  width:auto;
+}
+
+.uparrow {
+  position: relative;
+  margin-right: -1rem;
+  margin-left: -1rem;
+  margin-top: -.5rem;
+  height: 3rem;
+  width:auto;
+}
+
+.loginForm {
+ 
+}
