@@ -57,5 +57,12 @@ export default {
           }
       });
     },
+    cron: function (authToken){
+      return axios.post('/api/histories/cron', {
+        headers: {
+          'Authorization': `Bearer ${authToken}`
+        }
+      })
+    }
   }
 }

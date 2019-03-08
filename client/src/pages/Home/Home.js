@@ -52,6 +52,11 @@ class Home extends Component {
     .then(data => this.setState({
       symbols: data.data.symbols}))
   }
+  
+  historyButton = () => {
+    API.History.cron(this.context.authToken)
+    .then(response => response.data)
+  }
 
   handleClickChart = (symbolId, symbol) => {
     API.History.getIndividual(this.context.authToken, symbolId, symbol)
@@ -88,7 +93,8 @@ class Home extends Component {
               <h1>Dashboard</h1>
             </header>
           </div>
-          <div className="col-lg-1"></div>
+          <div className="col-lg-1">
+          <button onClick={this.historyButton}>Generate History</button></div>
         </div>
 
         <div className="row pos">
