@@ -24,53 +24,6 @@ class Home extends Component {
       "theme": "fusion"
     },
     positionInputs: {
-      "comments": "",
-      "MOMSPOT": 1,
-      "SWINGSETUP": 3,
-      "MSTRMOMSELECT": 5,
-      "GoLongShort": 3,
-      "Factor4": 1,
-      "EntryType": 2,
-      "VStratType": 1,
-      "Mirror": 1,
-      "LookBackDays": 10,
-      "MOMCombo": 0,
-      "MomentumFlip": 1,
-      "MomentumType": 1.25,
-      "MSTRMAVDIST": 1,
-      "MAVGConfig": 1,
-      "MAVG": 21,
-      "NthHigh": 1,
-      "Agree": 2,
-      "AgreeSpacer": 1,
-      "Spacing": 10,
-      "StartSpacing": 0,
-      "MSTRConfig": 0,
-      "MSTRSwingHL": 21,
-      "SwingHLFilter": 8,
-      "PVNumFilter": 0,
-      "PVNum": 0,
-      "BreakFilter": 0,
-      "DailyHLFilter": 0,
-      "DHLMult": 0,
-      "CenterType": 2,
-      "CenterMA": 5,
-      "RangeAvg": 0,
-      "TRangeAvg": 3,
-      "T2RangeAvg": 2.5,
-      "SafetyRangeAvg": 2.5,
-      "TExit2": 1,
-      "SafetyX": 1,
-      "StopLoss": 300,
-      "ExitAtTooLate": 1,
-      "TooEarly": 1,
-      "TooLate": 2359,
-      "TooLateEntry": 2359,
-      "ExitOnFriday": 1,
-      "MAXBARS": 500,
-      "OneTick": .01,
-      "MinDailyBars": 7,
-      "DollarsPerPt": 20
     }
   }
 
@@ -107,7 +60,8 @@ class Home extends Component {
   }
 
   handleClickChart = (symbolId, symbol) => {
-    API.History.getIndividual(this.context.authToken, symbolId, symbol)
+    API.History.cron(this.context.authToken)
+    .then(response => API.History.getIndividual(this.context.authToken, symbolId, symbol))
     .then(response => response.data)
     .then(data => data.map((history, i) => {
       history.x = data.length - i;
@@ -115,7 +69,7 @@ class Home extends Component {
     }))
     .then(data => this.setState({historicalData: data, showChart: true, chartOptions:{
       "caption": symbol,
-      "subCaption": "1000 Day History",
+      "subCaption": "500 Day History",
       "numberprefix": "$",
       "pyaxisname": "Price",
       "vyaxisname": "Volume",
@@ -142,7 +96,8 @@ class Home extends Component {
             </header>
           </div>
           <div className="col-lg-1">
-          <button onClick={this.historyButton}>Generate History</button></div>
+          {/* <button onClick={this.historyButton}>Generate History</button> */}
+          </div>
         </div>
 
         <div className="row pos">
@@ -182,7 +137,7 @@ class Home extends Component {
               Lookup Symbol<br />
               <input className="symINPUT" type="text" name="symbol" value={this.state.schField} onChange={this.handleInputChange} /><br />
               <button className="subBTN" type="submit">Add Symbol</button>
-            </form>
+            </form><br/><br/>
           </div>
           <div className="col-lg-1"></div>
         </div>

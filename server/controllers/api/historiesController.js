@@ -3,7 +3,7 @@ const historiesController = require('express').Router();
 const WorldTradingDataAPI = require('../../lib/WorldTradingDataAPI');
 const db = require('../../models');
 
-const BATCH_SIZE = 1000;
+const BATCH_SIZE = 500;
 
 
 historiesController.post('/stocks/history', (req, res) => {

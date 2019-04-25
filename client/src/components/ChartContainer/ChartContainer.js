@@ -43,9 +43,10 @@
     };
       return (
         <>
-        <button onClick={this.props.onClick}>Close Chart</button>
       <ReactFC
          {...chartConfigs}/>
+         <br/>
+         <button onClick={this.props.onClick}>Close Chart</button><br/><br/>
       </>
       );
    }
