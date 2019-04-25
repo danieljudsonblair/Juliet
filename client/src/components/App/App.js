@@ -5,8 +5,8 @@ import API from '../../lib/API';
 import TokenStore from '../../lib/TokenStore';
 import AuthContext from '../../contexts/AuthContext';
 import Navigation from '../../components/Navigation/Navigation';
-import PrivateRoute from '../../components/PrivateRoute/PrivateRoute';
 import Login from '../../pages/Login/Login';
+import Register from '../../pages/Register/Register';
 import Home from '../../pages/Home/Home';
 import NotFound from '../../pages/NotFound/NotFound';
 
@@ -53,6 +53,7 @@ class App extends Component {
           <Navigation />
           <div className='container'>
             <Switch>
+              <Route path='/register' component={Register} />
               <Route path='/login' component={Login} />
               <Route exact path='/' component={Home} />
               <Route component={NotFound} />

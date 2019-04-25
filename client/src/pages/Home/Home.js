@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import API from '../../lib/API';
 import AuthContext from '../../contexts/AuthContext'
 import Chart from '../../components/ChartContainer/ChartContainer'
@@ -23,6 +22,55 @@ class Home extends Component {
       "showvolumechart": "1",
       "vNumberPrefix": "",
       "theme": "fusion"
+    },
+    positionInputs: {
+      "comments": "",
+      "MOMSPOT": 1,
+      "SWINGSETUP": 3,
+      "MSTRMOMSELECT": 5,
+      "GoLongShort": 3,
+      "Factor4": 1,
+      "EntryType": 2,
+      "VStratType": 1,
+      "Mirror": 1,
+      "LookBackDays": 10,
+      "MOMCombo": 0,
+      "MomentumFlip": 1,
+      "MomentumType": 1.25,
+      "MSTRMAVDIST": 1,
+      "MAVGConfig": 1,
+      "MAVG": 21,
+      "NthHigh": 1,
+      "Agree": 2,
+      "AgreeSpacer": 1,
+      "Spacing": 10,
+      "StartSpacing": 0,
+      "MSTRConfig": 0,
+      "MSTRSwingHL": 21,
+      "SwingHLFilter": 8,
+      "PVNumFilter": 0,
+      "PVNum": 0,
+      "BreakFilter": 0,
+      "DailyHLFilter": 0,
+      "DHLMult": 0,
+      "CenterType": 2,
+      "CenterMA": 5,
+      "RangeAvg": 0,
+      "TRangeAvg": 3,
+      "T2RangeAvg": 2.5,
+      "SafetyRangeAvg": 2.5,
+      "TExit2": 1,
+      "SafetyX": 1,
+      "StopLoss": 300,
+      "ExitAtTooLate": 1,
+      "TooEarly": 1,
+      "TooLate": 2359,
+      "TooLateEntry": 2359,
+      "ExitOnFriday": 1,
+      "MAXBARS": 500,
+      "OneTick": .01,
+      "MinDailyBars": 7,
+      "DollarsPerPt": 20
     }
   }
 
